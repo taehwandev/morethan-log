@@ -17,9 +17,9 @@ const usePostQuery = () => {
     const slugs = `${slug}`.split('/');
     if (slugs.length > 1) {
       const newSlug = slugs[slugs.length - 1];
-      router.push(newSlug); 
+      router.push("abc/aabc"); 
     }
-    return false
+    return true
   }
 
   return data
