@@ -12,10 +12,10 @@ const usePostQuery = () => {
     enabled: false,
     onError: (error) => {
       // Redirection logic
-      const slugs = slug.split('/');
+      const slugs = `${slug}`.split('/');
       if (slugs.length > 1) {
         const newSlug = slugs[slugs.length - 1];
-        router.push(newSlug); 
+        router.push(`${newSlug}`); 
       }
     },
   })
