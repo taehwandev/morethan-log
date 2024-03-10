@@ -8,9 +8,7 @@ type Props = {}
 const CustomError: React.FC<Props> = () => {
   return (
     <StyledWrapper>
-      <Script id="redirect">
-        {`const currentUrl = window.location.href; const removeHtml = currentUrl.replace(".html", ""); const urlObj = new URL(currentUrl); const domain = urlObj.origin;const path = urlObj.pathname.split('/');if (path.length > 1) {const lastUrl = path[path.length - 1]window.location.replace(\"${domain}/${lastUrl}\")};`}
-    </Script>
+      <Script src="./redirect.js" />
       <div className="wrapper">
         <div className="top">
           <div>4</div>
