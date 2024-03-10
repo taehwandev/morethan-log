@@ -10,15 +10,17 @@ const usePostQuery = () => {
   const { data } = useQuery<PostDetail>({
     queryKey: queryKey.post(`${slug}`),
     enabled: false,
-    onError: (error) => {
-      // Redirection logic
-      const slugs = `${slug}`.split('/');
-      if (slugs.length > 1) {
-        const newSlug = slugs[slugs.length - 1];
-        router.push(newSlug); 
-      }
-    }
   });
+
+  if (!data) {
+    // Redirection logic
+    const slugs = `${slug}`.split('/');
+    if (slugs.length > 1) {
+      const newSlug = slugs[slugs.length - 1];
+      router.push(newSlug); 
+    }
+    return null
+  }
 
   return data
 }
