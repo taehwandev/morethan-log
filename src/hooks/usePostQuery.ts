@@ -19,7 +19,7 @@ const usePostQuery = () => {
       const newSlug = slugs[slugs.length - 1];
       router.push("abc/aabc"); 
     }
-    return true
+    return null
   }
 
   return data
