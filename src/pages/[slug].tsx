@@ -55,6 +55,9 @@ const DetailPage: NextPageWithLayout = () => {
   const post = usePostQuery()
 
   if (!post) {
+    const router = useRouter()
+    const { slug } = router.query
+
     // Redirection logic
     const slugs = `${slug}`.split('/');
     if (slugs.length > 1) {
