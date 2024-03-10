@@ -12,7 +12,7 @@ const usePostQuery = () => {
     enabled: false,
   });
 
-  if (!data && slug.length > 1) {
+  if (!data && slug != undefined && slug.length > 1) {
     // Redirection logic
     const newSlug = slug[slug.length - 1]
     router.push(newSlug)
