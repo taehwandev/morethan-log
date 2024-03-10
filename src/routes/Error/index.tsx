@@ -1,14 +1,29 @@
 import styled from "@emotion/styled"
 import React from "react"
 import { Emoji } from "src/components/Emoji"
-import Script from 'next/script';
 
 type Props = {}
 
 const CustomError: React.FC<Props> = () => {
   return (
     <StyledWrapper>
-      <Script src="redirect.js" />
+      <script>
+        // Try redirect...
+        const currentUrl = window.location.href;
+
+        // old html remove
+        const removeHtml = currentUrl.replace(".html", "");
+
+        // new redirect
+        const urlObj = new URL(currentUrl);
+        const domain = urlObj.origin;
+        const path = urlObj.pathname.split('/');
+
+        if (path.length > 1) {
+            const lastUrl = path[path.length - 1]
+            window.location.replace(`${domain}/${lastUrl}`)
+        }
+      </script>
       <div className="wrapper">
         <div className="top">
           <div>4</div>
