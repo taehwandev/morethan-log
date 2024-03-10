@@ -12,7 +12,8 @@ const usePostQuery = () => {
   if (slugs.length > 1) {
     const newSlug = slugs[slugs.length - 1];
     router.push(`${newSlug}`); 
-  }
+    return null
+  } else {
 
   const { data } = useQuery<PostDetail>({
     queryKey: queryKey.post(`${slug}`),
@@ -20,6 +21,7 @@ const usePostQuery = () => {
   })
 
   return data
+  }
 }
 
 export default usePostQuery
