@@ -54,20 +54,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const DetailPage: NextPageWithLayout = () => {
   const post = usePostQuery()
 
-  if (!post) {
-    const router = useRouter()
-    const { slug } = router.query
-
-    // Redirection logic
-    const slugs = `${slug}`.split('/');
-    if (slugs.length > 1) {
-      const newSlug = slugs[slugs.length - 1];
-      router.push(`${newSlug}`); 
-      return null
-    } else {
-      return <CustomError />
-    }
-  }
+  if (!post) return <CustomError />
 
   const image =
     post.thumbnail ??
