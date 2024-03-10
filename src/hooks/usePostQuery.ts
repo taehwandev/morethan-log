@@ -7,7 +7,7 @@ const usePostQuery = () => {
   const router = useRouter()
   const { slug } = router.query
 
-  const { data } = useQuery<PostDetail>({
+  const { data, error } = useQuery<PostDetail>({
     queryKey: queryKey.post(`${slug}`),
     enabled: false,
     onError: (error) => {
@@ -20,7 +20,7 @@ const usePostQuery = () => {
     },
   })
 
-  return data
+  return { data, error }
 }
 
 export default usePostQuery
