@@ -6,6 +6,13 @@ import { PostDetail } from "src/types"
 const usePostQuery = () => {
   const router = useRouter()
   const { slug } = router.query
+
+  const slugs = slug.split('/');
+  if (slugs.length > 1) {
+    const newSlug = slugs[slugs.length - 1];
+    router.push(newSlug);
+  }
+
   const { data } = useQuery<PostDetail>({
     queryKey: queryKey.post(`${slug}`),
     enabled: false,
