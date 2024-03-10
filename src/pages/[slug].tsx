@@ -52,9 +52,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const DetailPage: NextPageWithLayout = () => {
-  const post = usePostQuery()
+  const postQuery = usePostQuery()
 
-  if (!post) return <CustomError />
+  if (postQuery.error) return
+  const post = postQuery.data
+
+  // if (!post) return <CustomError />
 
   const image =
     post.thumbnail ??

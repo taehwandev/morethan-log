@@ -7,25 +7,20 @@ const usePostQuery = () => {
   const router = useRouter()
   const { slug } = router.query
 
-  // Redirection logic
-  const slugs = `${slug}`.split('/');
-  if (slugs.length > 1) {
-    const newSlug = slugs[slugs.length - 1];
-    router.push(`${newSlug}`); 
-    
-    const { data } = useQuery<PostDetail>({
-      queryKey: queryKey.post(`${slug}`),
-      enabled: false,
-    })
-    return data
-  } else {
-    const { data } = useQuery<PostDetail>({
-      queryKey: queryKey.post(`${slug}`),
-      enabled: false,
-    })
+  const { data, error } = useQuery<PostDetail>({
+    queryKey: queryKey.post(`${slug}`),
+    enabled: false,
+    onError: (error) => {
+      // Redirection logic
+      const slugs = `${slug}`.split('/');
+      if (slugs.length > 1) {
+        const newSlug = slugs[slugs.length - 1];
+        router.push(newSlug); 
+      }
+    }
+  });
 
-    return data
-  }
+  return { data, error };
 }
 
 export default usePostQuery
