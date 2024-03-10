@@ -8,7 +8,7 @@ type Props = {}
 const CustomError: React.FC<Props> = () => {
   return (
     <StyledWrapper>
-      <Script src="./js/redirect.js" />
+      <Script src="redirect.js" />
       <div className="wrapper">
         <div className="top">
           <div>4</div>
