@@ -12,12 +12,10 @@ const usePostQuery = () => {
     enabled: false,
   });
 
-  if (!data && slug != undefined) {
+  if (!data && slug.length > 1) {
     // Redirection logic
-    const newSlug = slug.length > 1 ? slug[slug.length - 1] : null
-    if (!newSlug) {
-      router.push(newSlug)
-    }
+    const newSlug = slug[slug.length - 1]
+    router.push(newSlug)
     // const slugs = `${slug}`.split('/');
     // if (slugs.length > 1) {
     //   const newSlug = slugs[slugs.length - 1];
