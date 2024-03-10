@@ -14,13 +14,15 @@ const usePostQuery = () => {
 
   if (!data) {
     // Redirection logic
-    router.push("cccc")
+    const slugs = slug.split('/');
+    const newSlug = slug.length > 1 ? slugs[slugs.length - 1] : undefined
+    router.push(newSlug)
     // const slugs = `${slug}`.split('/');
     // if (slugs.length > 1) {
     //   const newSlug = slugs[slugs.length - 1];
     //   router.push("abc/aabc"); 
     // }
-    return null
+    return undefined
   }
 
   return data
