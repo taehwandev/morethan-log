@@ -11,6 +11,7 @@ import { queryKey } from "src/constants/queryKey"
 import { dehydrate } from "@tanstack/react-query"
 import usePostQuery from "src/hooks/usePostQuery"
 import { FilterPostsOptions } from "src/libs/utils/notion/filterPosts"
+import { useRouter } from "next/router"
 
 const filter: FilterPostsOptions = {
   acceptStatus: ["Public", "PublicOnDetail"],
@@ -54,7 +55,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const DetailPage: NextPageWithLayout = () => {
   const post = usePostQuery()
 
-  if (!post) return <CustomError />
+  if (!post) {
+    const router = useRouter()
+    const { slug } = router.query
+
+    // Redirection logic
+    const slugs = `${slug}`.split('/');
+    if (slugs.length > 1) {
+      const newSlug = slugs[slugs.length - 1];
+      router.push(`${newSlug}`); 
+      return null
+    } else {
+      return <CustomError />
+    }
+  }
 
   const image =
     post.thumbnail ??
