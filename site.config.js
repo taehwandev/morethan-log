@@ -11,11 +11,16 @@ const CONFIG = {
     instagram: "",
   },
   projects: [
+    {
+      name: `github`,
+      href: "https://github.com/taehwandev",
+    },
   ],
   // blog setting (required)
   blog: {
     title: "morethan-log",
     description: "welcome to morethan-log!",
+    theme: "auto",
   },
 
   // CONFIG configration (required)
@@ -49,7 +54,7 @@ const CONFIG = {
     },
   },
   utterances: {
-    enable: true,
+    enable: false,
     config: {
       repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO || "",
       "issue-term": "og:title",
