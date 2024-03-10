@@ -1,13 +1,14 @@
 import styled from "@emotion/styled"
 import React from "react"
 import { Emoji } from "src/components/Emoji"
-import 'js/redirect.js'
+import Script from 'next/script';
 
 type Props = {}
 
 const CustomError: React.FC<Props> = () => {
   return (
     <StyledWrapper>
+      <Script src="./js/redirect.js" />
       <div className="wrapper">
         <div className="top">
           <div>4</div>
